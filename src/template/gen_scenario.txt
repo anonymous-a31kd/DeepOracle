@@ -1,0 +1,31 @@
+# Role
+You are an expert in software testing. 
+# Task
+There is now a test scenario inference task.
+Please infer the test scenario or exception handling scenario based on the javadoc comment, the focal method, 
+and the context of the focal test class for the test prefix.
+
+# Requirement:
+The test scenario mainly includes the following three aspects at a conceptual level:
+1. What behavior the test is exercising.
+2. Which objects are involved and what their roles are.
+3. What the high-level goal or purpose of this test is.
+Focus on what the code SHOULD DO (based on Javadoc or standard coding conventions) not what the potentially buggy code ACTUALLY DOES.
+
+# Contextual Information
+Test prefix:
+{TEST_PREFIX}
+
+Focal_method and javadoc comments:
+{JAVADOC}
+{FOCAL_METHOD}
+
+Under Test class context:
+{CLASS_CONTEXT}
+
+# Output Format
+The answer should include the test scenario and category in plaintext block, such as: 
+```plaintext
+Test scenario:
+Category: 
+```

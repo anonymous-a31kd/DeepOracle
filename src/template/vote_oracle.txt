@@ -1,0 +1,17 @@
+Now there is a judgment task.
+Now there are two versions of complete test cases generated with the same test prefix. Please determine if the Oracles of these two test cases are semantically equivalent. 
+If the Oracles are equivalent, please return Yes.
+If the Oracles are not equivalent, please return No.
+
+Return results in the following format:
+Therefore, it should be: < Yes | No >
+
+Test Prefix:
+{test_prefix}
+
+Two versions of complete test cases:
+TestCase_1:
+{test_case_1}
+
+TestCase_2:
+{test_case_2}

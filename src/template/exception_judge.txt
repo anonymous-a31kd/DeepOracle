@@ -1,0 +1,37 @@
+# Role
+You are a Java Code Reliability Auditor.
+# Task
+Please use the given information: focal method, javadoc comments(if have), test prefix, test scenario.
+Your task is to determine whether the test prefix will trigger an Unexpected exceptions during actual execution. 
+
+# Definition: What is an "Unexpected Exception"?
+Unexpected exception: An unexpected exception was thrown due to errors, crashes, or logical issues in the Focal Method.
+
+# Judgment Logic (Binary Classification)
+
+###  Return Yes (Unexpected Exception) in any of the following situations:
+Trigger: An exception ACTUALLY occurs during execution and it is wrong.
+1.  Runtime Crashes:
+    The code execution terminates with an unchecked exception.
+    Reasoning: The code blindly operated on invalid data without checking it first.
+2.  Logic Violation (The "Wrong" Reject):
+    * The current input is valid,  but the code **actively throws** an exception.
+    * *Reasoning:* The implementation overly restricts valid inputs, preventing the expected functionality.
+
+### Return No: 
+If it does not fall into the above cases, please return NO.
+
+
+# Output Format
+Return results in the following format:
+Therefore, this test will throw an Unexpected exception: Yes | No
+
+Test Scenario:
+{test_scenario}
+
+Test Prefix:
+{test_prefix}
+
+Focal method and javadoc comments:
+{javadoc}
+{focal_method}

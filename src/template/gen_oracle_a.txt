@@ -1,0 +1,28 @@
+# Role
+You are now an Oracle generation expert.
+# Task
+Please generate the Oracle for this Test Prefix and Focal method, based on the javadoc comments(if have), context of the under test class.
+The generated Oracle mainly falls into one of two categories: assert statements or expected exception(@Test(expected=xxxExpection.class)).
+Attention : If you need to generate an assert statement, it's best to generate only one assert statement for the test prefix, if needed, multiple assert statements can also be generated.
+
+# Requirements
+Keep the structure of the test prefix unchanged and follow the format of JUnit4. JDK version 8. 
+
+# Output
+Return the test case with the test prefix completed, enclosed in a Java block, such as:
+```java
+@Test
+public void test_xx_x() throws Exception {{
+// Complete test case
+}}
+```
+
+Test Prefix:
+{test_prefix}
+
+Focal method and javadoc comments:
+{javadoc}
+{focal_method}
+
+Context of the under test class:
+{context}

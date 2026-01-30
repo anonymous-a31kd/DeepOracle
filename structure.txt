@@ -1,0 +1,51 @@
+.
+├── data
+│   ├── d4j_evo_prefix
+│   ├── d4j_llm_prefix
+│   ├── gb_evo_prefix
+│   └── gb_llm_prefix
+├── README.md
+├── RQ1
+│   ├── common
+│   ├── data
+│   ├── eval
+│   ├── extractor
+│   ├── lib
+│   ├── model
+│   ├── naive.py
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── rq0.sh
+│   ├── rqs
+│   ├── run_exp_llm.sh
+│   ├── run_exp.sh
+│   ├── run_rq1_2.sh
+│   ├── run_rq3.sh
+│   └── toga.py
+├── RQ2
+│   ├── evaluation_p1.csv
+│   ├── evaluation_p2.csv
+│   ├── evaluation_p3.csv
+│   ├── evaluation_results.csv
+│   ├── sample_inputs.csv
+│   └── statistical.ipynb
+├── RQ3
+│   ├── without_both
+│   ├── without_exception_inf
+│   └── without_scenario_inf
+├── src
+│   ├── ablation.py
+│   ├── baseline_llm.py
+│   ├── exception_judge.py
+│   ├── gen_oracle.py
+│   ├── gen_prefix_by_llm
+│   ├── get_scenario.py
+│   ├── __init__.py
+│   ├── postprocess.py
+│   ├── processing.py
+│   ├── template
+│   ├── test.ipynb
+│   └── voter.py
+└── structure.txt
+
+22 directories, 27 files
