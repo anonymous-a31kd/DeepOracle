@@ -8,6 +8,7 @@ from postprocess import extract_method_signature, process_oracle, judgement_text
 from exception_judge import get_exception_result, gen_oracle_preds
 import re
 import sys
+import fire
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -68,6 +69,7 @@ def gen_oracle_without_scenario(inputs_path, context_path, output_file, row_list
 exception_judge_prompt_no_scenario_template_path = 'template/exception_judge_a.txt'
 with open(exception_judge_prompt_no_scenario_template_path, "r") as f:
     template_exception_judge_no_scenario = f.read()
+
 
 def exception_judge_no_scenario(inputs_file, dir_path, version, exception_list):
     df = pd.read_csv(inputs_file)
@@ -169,6 +171,11 @@ def ablation_both(base_path):
 
 
 if __name__ == "__main__":
+    fire.Fire({
+        "get_oracle_candidates_no_scenario": get_oracle_candidates_no_scenario,
+        "get_exception_judgement_no_scenario": get_exception_judgement_no_scenario,
+        "ablation_both": ablation_both,
+    })
     
     # no exception  
     # copy from vote_tmp/oracle_preds.csv
