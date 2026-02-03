@@ -56,8 +56,16 @@ python voter.py work_dir
 # Execute exception Inference 
 python exception_judge.py work_dir
 ```
-* work_dir represents the working directory, which should include inputs.csv, meta.csv, context.csv
+* `work_dir` represents the working directory, which should include inputs.csv, meta.csv, context.csv
 
+* `inputs.csv`:
+Contains the focal method, test prefixes, and related input information used for generation.
+
+* `meta.csv`:
+Stores metadata of the test prefixes, such as test_name and project_id used during generation and analysis.
+
+* `context.csv`:
+Stores the class-level context of the focal method.
 ---
 
 # Reproduction
@@ -82,6 +90,39 @@ tar -xzvf data/run_record.tar.gz -C data
 cd eval
 python rq1.py
 ```
+* Execution result
+```
+RQ1_1 Results: EvoSuite-Generated Test Prefixes
+Defects4J
+Method          BugFound         FPR   Precision    TP    FP    TN
+toga                  46      23.98%      35.60%    68   123   390
+togll                 18      43.77%      12.77%    36   246   316
+llm_direct            42      25.29%      32.83%    65   133   393
+deeporacle            53      21.56%      39.58%    76   116   422
+
+GrowingBugs
+Method          BugFound         FPR   Precision    TP    FP    TN
+toga                   5      23.23%      20.69%     6    23    76
+togll                  1      37.21%      31.91%    15    32    54
+llm_direct             4      32.18%      30.00%    12    28    59
+deeporacle             8      26.67%      38.46%    15    24    66
+
+RQ1_2 Results: LLM-Generated Test Prefixes
+Defects4J
+Method          BugFound         FPR   Precision    TP    FP    TN
+toga                  59      13.98%      27.92%   110   284  1747
+togll                 34      30.77%       5.86%    41   659  1483
+llm_direct           120      18.50%      38.82%   217   342  1507
+deeporacle           138      18.00%      43.79%   261   335  1526
+
+GrowingBugs
+Method          BugFound         FPR   Precision    TP    FP    TN
+toga                   7      13.21%      34.38%    11    21   138
+togll                  2      26.32%       8.16%     4    45   126
+llm_direct            10      25.52%      37.29%    22    37   108
+deeporacle            15      23.29%      46.88%    30    34   112
+```
+
 📦 Structure of `run_record.tar.gz`
 ``` bash
 .
@@ -132,7 +173,7 @@ Stores the generated test scenarios.
 Store the complete generated test cases with oracles from three independent runs.
 
 * `*_generated/` (e.g., `togs_generated/`):
-Contains various intermediate records produced during test case generation and execution.
+Contains various intermediate records produced during test case execution.
 
 * `rq1.csv`:
 Stores the execution results of the generated test cases, used for answering RQ1.
@@ -151,6 +192,23 @@ You can execute the following script to view the data statistics results.
 tar -xzvf RQ3/ablation_run_record.tar.gz -C RQ3
 cd eval
 python rq3.py
+```
+* Execution result
+```
+RQ3 Results: Ablation Study
+EvoSuite-Generated Test Prefixes
+Method                     BugFound         FPR   Precision    TP    FP    TN
+deeporacle                       61      22.29%      39.39%    91   140   488
+without_exception_inf            56      25.96%      34.80%    87   163   465
+without_scenario_inf             43      25.20%      35.00%    84   156   463
+without_both                     41      26.66%      32.93%    81   165   454
+
+LLM-Generated Test Prefixes
+Method                     BugFound         FPR   Precision    TP    FP    TN
+deeporacle                      153      18.39%      44.09%   291   369  1638
+without_exception_inf           151      19.62%      42.31%   289   394  1614
+without_scenario_inf            142      22.77%      35.76%   260   467  1584
+without_both                    140      23.94%      34.53%   259   491  1560
 ```
 
 ### Manually rerun the ablation experiment 
