@@ -30,8 +30,6 @@ def collect_failed_lines(error_msg: str) -> Dict[str, Set[int]]:
                 continue
             # 
             filepath = '/'.join(match.group(1).split('/')[6:])
-            # if filter 
-            # filepath = '/'.join(match.group(1).split('/')[8:])
             line_no = int(match.group(2))
             failed_lines[filepath].add(line_no)
     return failed_lines

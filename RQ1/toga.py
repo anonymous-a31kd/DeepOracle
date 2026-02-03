@@ -46,7 +46,6 @@ def main():
     methods, tests, docstrings = fm_test_pairs.focal_method, fm_test_pairs.test_prefix, fm_test_pairs.docstring
 
     # EXCEPT INPUTS
-    # 将原始输入的测试用例删除try-catch语句
     print('preparing exception model inputs')
     normalized_tests, kept_methods, labels, idxs = exception_data.get_model_inputs(tests, zip(methods, docstrings))
 
@@ -58,7 +57,6 @@ def main():
             w.writerow(["label", "test", "fm", "docstring", "idx"])
             for test, (method, docstring), label, idx in except_data:
                 w.writerow([label, test, method, docstring, idx])
-        # 执行异常抛出预测
         res = sp.run(f'bash ./model/exceptions/run_eval.sh {except_input_file}'.split(), env=os.environ.copy(),
                      check=True)
 

@@ -45,7 +45,7 @@ pip install -r requirements.txt
 ```
 
 # Use DeepOracle to Generate oracles 
-requires configuring API-KEY (src/.env)
+requires configuring API-KEY (`src/.env`)
 ```bash
 cd src
 # Generate Scenario
@@ -212,7 +212,7 @@ without_both                    140      23.94%      34.53%   259   491  1560
 ```
 
 ### Manually rerun the ablation experiment 
-requires configuring API-KEY (src/.env)
+requires configuring API-KEY (`src/.env`)
 
 * Without Exception Inference
 ``` bash

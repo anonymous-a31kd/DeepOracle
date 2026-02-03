@@ -29,7 +29,7 @@ def collect_failed_lines(error_msg: str) -> Dict[str, Set[int]]:
                     logging.error(f"Can not find line no in: {line}")
                 continue
             # 
-            filepath = '/'.join(match.group(1).split('/')[4:])
+            filepath = '/'.join(match.group(1).split('/')[6:])
 
             line_no = int(match.group(2))
             failed_lines[filepath].add(line_no)
