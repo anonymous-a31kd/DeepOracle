@@ -1,5 +1,12 @@
-data/
-RQ1/
-RQ2/
-RQ3/
+data/*
+!data/*.tar.gz
+RQ1/data/*
+!RQ1/data/*.tar.gz
 
+RQ3/*
+!RQ3/*.tar.gz
+
+deeporacle_sample/
+test/
+src/__pycache__/
+*.pyc

@@ -15,10 +15,9 @@
 
 ```
 
-
-# Reproduction
-## Use DeepOracle to Generate oracles 
+# Use DeepOracle to Generate oracles (requires configuring API-KEY)
 ```bash
+cd src
 # Generate Scenario
 python get_scenario.py work_dir
 # Generate oracle candidates and vote
@@ -29,38 +28,52 @@ python exception_judge.py work_dir
 ```
 * work_dir represents the working directory, which should include inputs.csv, meta.csv, context.csv
 
+---
+
+# Reproduction
 ## RQ1
-### Execute the generated oracle
+### Execute the generated oracle 
+(Datasets need to be prepared before running)
 ``` bash
 # generate oracles using DeepOracle and Baselines
 cd RQ1
+tar xzf test_framework.tar.gz
 # run experiments for rq1_1 and rq1_2
-bash run_rq1_2.sh
-# obtain the results
-python -m rqs.rq1_2 cal_result
+bash run_rq1_2.sh 4 1
 ```
 
-### Display the comparison results with baselines.
+### Display the comparison results with baselines
+All runtime data and results during the experiment are stored in data/run_record.tar.gz.
+``` bash
+cd data
+tar xzf run_record.tar.gz
+```
+
+You can execute the following script to view the data statistics results.
 ``` bash
 cd eval
 python rq1.py
 ```
+---
 
 ## RQ2
-
+Test Scenario Evaluation samples and evaluation results are stored in RQ2
 ```
 
 ```
 
+---
 ## RQ3
-
-### Display the abaltion experiment results
+### Display the ablation experiment results
+All runtime data and results during the experiment are stored in RQ3/ablation_run_record.tar.gz.
+You can execute the following script to view the data statistics results.
 ``` bash
 cd eval
-python rq1.py
+python rq3.py
 ```
 
-### Without Exception Inference
+### Manually rerun the ablation experiment (requires configuring API-KEY)
+Without Exception Inference
 ``` bash
 # Generate Scenario
 python get_scenario.py work_dir
@@ -68,15 +81,15 @@ python get_scenario.py work_dir
 python gen_oracle.py work_dir
 python voter.py work_dir
 ```
-
-### Without Scenario Inference
+---
+Without Scenario Inference
 ``` bash
 python -m ablation.get_oracle_candidates_no_scenario work_dir
 python voter.py work_dir
 python -m ablation.get_exception_judgement_no_scenario work_dir
 ```
-
-### Without Both
+---
+Without Both
 ``` bash
 python -m ablation.get_oracle_candidates_no_scenario work_dir
 python voter.py work_dir

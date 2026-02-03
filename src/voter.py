@@ -16,6 +16,8 @@ query_llm = QueryLLM(
     api_base=os.getenv('OPENAI_FORWARD_API_BASE')
 )
 
+MAX_WORKERS = 8
+
 def vote_text_process(text):
     lines = text.strip().split('\n')
     lines.reverse()
@@ -92,7 +94,7 @@ def vote(inputs_path, oracle_v1, oracle_v2, output_file, row_list):
         except Exception as e:
             print(f"process row {index} error: {e}")
 
-    with ThreadPoolExecutor(max_workers=8) as executor:
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = [
             executor.submit(process_row, index, df.loc[index])
             for index in row_set
@@ -125,28 +127,28 @@ if __name__ == "__main__":
     # format
     format_vote_result(vote_file, vote_result_tmp)
     df_vote_tmp = pd.read_csv(vote_result_tmp)
-    yes_list = df_vote_tmp.index[df_vote_tmp["vote_result"] == 'Yes'].tolist()
-    no_list = df_vote_tmp.index[df_vote_tmp["vote_result"] == 'No'].tolist()
+    yes_list = df_vote_tmp.loc[df_vote_tmp["vote_result"] == 'Yes', "index"].tolist()
+    no_list = df_vote_tmp.loc[df_vote_tmp["vote_result"] == 'No', "index"].tolist()
     save_vote_result(vote_result, yes_list, result="TestCase_1")
     
     # second_vote
-    if len(no_list > 0):
+    if len(no_list) > 0:
         print('second compare oracle_v2 and oracle_v3: ')
         vote(inputs_path, oracle_v2, oracle_v3, vote_file, no_list)
         format_vote_result(vote_file, vote_result_tmp)
         df_vote_tmp = pd.read_csv(vote_result_tmp)
-        yes_list = df_vote_tmp.index[df_vote_tmp["vote_result"] == 'Yes'].tolist()
-        no_list = df_vote_tmp.index[df_vote_tmp["vote_result"] == 'No'].tolist()
+        yes_list = df_vote_tmp.loc[df_vote_tmp["vote_result"] == 'Yes', "index"].tolist()
+        no_list = df_vote_tmp.loc[df_vote_tmp["vote_result"] == 'No', "index"].tolist()
         save_vote_result(vote_result, yes_list, result="TestCase_2")
 
     # third_vote
-    if len(no_list > 0):
+    if len(no_list) > 0:
         print('third compare oracle_v1 and oracle_v3: ')
         vote(inputs_path, oracle_v1, oracle_v3, vote_file, no_list)
         format_vote_result(vote_file, vote_result_tmp)
         df_vote_tmp = pd.read_csv(vote_result_tmp)
-        yes_list = df_vote_tmp.index[df_vote_tmp["vote_result"] == 'Yes'].tolist()
-        no_list = df_vote_tmp.index[df_vote_tmp["vote_result"] == 'No'].tolist()
+        yes_list = df_vote_tmp.loc[df_vote_tmp["vote_result"] == 'Yes', "index"].tolist()
+        no_list = df_vote_tmp.loc[df_vote_tmp["vote_result"] == 'No', "index"].tolist()
         save_vote_result(vote_result, yes_list, result="TestCase_3")
     
     df_vote = pd.read_csv(vote_result) 

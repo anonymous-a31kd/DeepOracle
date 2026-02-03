@@ -14,14 +14,14 @@ Focus on what the code SHOULD DO (based on Javadoc or standard coding convention
 
 # Contextual Information
 Test prefix:
-{TEST_PREFIX}
+{test_prefix}
 
 Focal_method and javadoc comments:
-{JAVADOC}
-{FOCAL_METHOD}
+{javadoc}
+{focal_method}
 
 Under Test class context:
-{CLASS_CONTEXT}
+{context}
 
 # Output Format
 The answer should include the test scenario and category in plaintext block, such as: 
