@@ -11,3 +11,4 @@ test/
 src/__pycache__/
 src/test.ipynb
 *.pyc
+.gitignore
