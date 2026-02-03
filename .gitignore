@@ -9,4 +9,5 @@ RQ3/*
 deeporacle_sample/
 test/
 src/__pycache__/
+src/test.ipynb
 *.pyc

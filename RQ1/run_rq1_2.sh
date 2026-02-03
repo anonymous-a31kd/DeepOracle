@@ -3,7 +3,7 @@ N_JOBS=$1
 START=${2:-1}
 END=1
 g=togs
-project_base=/home1/dzheng/program/DeepOracle
+project_base=/home/program/DeepOracle
 
 for i in `seq ${START} ${END}`;do
     echo ${i}

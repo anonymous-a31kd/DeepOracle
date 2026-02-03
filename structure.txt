@@ -1,10 +1,18 @@
 .
 ├── data
+│   ├── bugfound_evo.csv
+│   ├── bugfound_llm.csv
 │   ├── d4j_evo_prefix
 │   ├── d4j_llm_prefix
 │   ├── gb_evo_prefix
-│   └── gb_llm_prefix
+│   ├── gb_llm_prefix
+│   ├── run_record.tar.gz
+│   └── structure.txt
+├── eval
+│   ├── rq1.py
+│   └── rq3.py
 ├── README.md
+├── requirements.txt
 ├── RQ1
 │   ├── common
 │   ├── data
@@ -30,6 +38,8 @@
 │   ├── sample_inputs.csv
 │   └── statistical.ipynb
 ├── RQ3
+│   ├── ablation_data.tar.gz
+│   ├── deeporacle
 │   ├── without_both
 │   ├── without_exception_inf
 │   └── without_scenario_inf
@@ -43,9 +53,10 @@
 │   ├── __init__.py
 │   ├── postprocess.py
 │   ├── processing.py
+│   ├── __pycache__
 │   ├── template
 │   ├── test.ipynb
 │   └── voter.py
 └── structure.txt
 
-22 directories, 27 files
+29 directories, 45 files

@@ -11,8 +11,8 @@ from dotenv import load_dotenv
 load_dotenv()
 query_llm = QueryLLM(
     model='gpt-4o-2024-11-20', 
-    api_key=os.getenv('OPENAI_FORWARD_API_KEY'), 
-    api_base=os.getenv('OPENAI_FORWARD_API_BASE')
+    api_key=os.getenv('OPENAI_API_KEY'), 
+    api_base=os.getenv('OPENAI_API_BASE')
 )
 
 def extract_method_signature(method_code):
